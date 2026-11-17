@@ -4,6 +4,8 @@ An original single-player browser game combining slingshot physics, destructible
 
 The interface is in Chinese. The demo supports desktop Chrome and mouse input.
 
+[Play the public demo](https://flock-and-flora.pages.dev/)
+
 ## Play
 
 - Choose a plant card, then click an empty planting slot.
