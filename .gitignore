@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.env
+.env.*
+coordination/
+review/
+evidence/
+scripts/
+.agents/
+.codex/
+handoff.md
+PLAN.md
+IMPLEMENTATION.md
+REVIEW.md

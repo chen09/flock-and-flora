@@ -1,0 +1,493 @@
+:root {
+  color-scheme: light;
+  --ink: #183e42;
+  --forest: #22634f;
+  --sky: #d5ece6;
+  --paper: #f2f6d9;
+  --gold: #f2c95c;
+  --edge: #90b4a1;
+  --rose: #d57872;
+  font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  background: var(--sky);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+button,
+a,
+input {
+  touch-action: manipulation;
+}
+
+button {
+  font: inherit;
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 8px 13px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #fff6c7;
+  border-color: var(--forest);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #db8234;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--forest);
+  color: white;
+  border-color: var(--forest);
+  font-weight: 700;
+  padding: 12px 28px;
+}
+
+.primary:hover:not(:disabled) {
+  background: #174b3f;
+  color: white;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 14px;
+  gap: 6px;
+}
+
+header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: none;
+  min-height: 40px;
+}
+
+#brand {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 23px;
+  white-space: nowrap;
+}
+
+#brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+#level-name {
+  font-size: 14px;
+}
+
+nav {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+nav button {
+  font-size: 12px;
+}
+
+#battle-tools {
+  flex: none;
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cards {
+  display: flex;
+  gap: 5px;
+  align-items: stretch;
+}
+
+.cards button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  font-size: 12px;
+  min-height: 46px;
+}
+
+.cards button.selected {
+  outline: 2px solid var(--forest);
+  background: #dbefc8;
+}
+
+.cards button img {
+  width: 31px;
+  height: 31px;
+}
+
+.cards .card-label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 3px;
+}
+
+.cards small {
+  font-size: 10px;
+  color: #49685c;
+}
+
+#brief {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 23px;
+  font-size: 12px;
+  color: #33544c;
+}
+
+#brief button {
+  padding: 1px 8px;
+  font-size: 11px;
+}
+
+#game-root {
+  flex: 1 1 0;
+  min-height: 0;
+  position: relative;
+}
+
+canvas {
+  display: block;
+}
+
+footer {
+  flex: none;
+  font-size: 11px;
+  line-height: 16px;
+  text-align: center;
+  color: #47635b;
+}
+
+.screen {
+  position: absolute;
+  inset: 58px 14px 25px;
+  z-index: 10;
+  overflow: auto;
+}
+
+#menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: #d5ece6;
+  border: 2px solid #92b9a7;
+  border-radius: 26px;
+  padding: 5vh 5vw;
+  isolation: isolate;
+}
+
+.menu-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #47705f;
+}
+
+h1 {
+  font-family: "Hiragino Maru Gothic ProN", "STKaiti", serif;
+  font-size: clamp(44px, 6vw, 85px);
+  line-height: 1.1;
+  margin: 15px 0;
+  color: #1d5647;
+  letter-spacing: 8px;
+}
+
+.english {
+  font-size: 23px;
+  letter-spacing: 2px;
+  margin: 15px 0 25px;
+}
+
+.menu-copy > p:not(.eyebrow):not(.english) {
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.menu-landscape {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: 24px;
+  background: radial-gradient(
+    circle at 22% 15%,
+    #fff5b6 0 55px,
+    transparent 57px
+  );
+}
+
+.menu-landscape i {
+  position: absolute;
+  width: 110%;
+  height: 55%;
+  left: -15%;
+  bottom: -30%;
+  border-radius: 50%;
+  background: #75af89;
+  transform: rotate(-9deg);
+  border-top: 18px solid #9acb91;
+}
+
+.menu-landscape i:nth-child(2) {
+  bottom: -16%;
+  left: -30%;
+  background: #448d75;
+  z-index: -1;
+}
+
+.menu-landscape i:nth-child(3) {
+  bottom: 0%;
+  left: -40%;
+  background: #9bbfad;
+  z-index: -2;
+}
+
+.level-map {
+  z-index: 1;
+  padding-left: 35px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.level-map h2 {
+  margin: 0 0 20px;
+}
+
+#level-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+#level-list button {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  background: #f2f6d9ee;
+  padding: 14px 10px;
+}
+
+#level-list b {
+  font-size: 26px;
+  color: #3e7a5c;
+}
+
+#level-list small {
+  display: block;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  color: #8b691e;
+}
+
+#save-notice {
+  font-size: 12px !important;
+}
+
+.result-card {
+  margin: auto;
+  width: min(520px, 90vw);
+  padding: 30px 40px;
+  background: var(--paper);
+  border: 2px solid var(--forest);
+  border-radius: 20px;
+  box-shadow: 0 12px 0 #1b4b3920;
+}
+
+#result {
+  display: flex;
+  background: #17483f66;
+  align-items: center;
+  backdrop-filter: blur(3px);
+}
+
+#result-stars {
+  font-size: 48px;
+  letter-spacing: 12px;
+  color: #b58320;
+  margin: 16px 0;
+}
+
+#result-goals {
+  list-style: none;
+  padding: 0;
+  line-height: 2;
+}
+
+#result-detail {
+  font-size: 13px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+#tutorial {
+  position: absolute;
+  z-index: 12;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  background: #f8f7dcf5;
+  border: 2px solid var(--forest);
+  border-radius: 14px;
+  padding: 10px 16px;
+  max-width: 650px;
+  width: max-content;
+  box-shadow: 0 5px 0 #183e4215;
+}
+
+#tutorial p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 6px;
+}
+
+#tutorial > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+#tutorial button {
+  font-size: 11px;
+  padding: 3px 8px;
+}
+
+dialog {
+  max-width: 520px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--forest);
+  border-radius: 20px;
+  padding: 24px 32px;
+}
+
+dialog::backdrop {
+  background: #173e4266;
+}
+
+dialog label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 18px 0;
+}
+
+dialog p,
+dialog li {
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+dialog form {
+  text-align: right;
+}
+
+dialog input[type="range"] {
+  accent-color: var(--forest);
+}
+
+@media (max-width: 1300px) {
+  #app {
+    padding: 4px 8px;
+    gap: 3px;
+  }
+  header {
+    min-height: 36px;
+  }
+  #brand {
+    font-size: 18px;
+  }
+  #hud {
+    gap: 4px;
+  }
+  .cards {
+    gap: 3px;
+  }
+  .cards button {
+    padding: 4px;
+    font-size: 11px;
+    gap: 3px;
+  }
+  .cards button img {
+    width: 25px;
+    height: 25px;
+  }
+  .cards small {
+    font-size: 9px;
+  }
+  .screen {
+    inset: 46px 8px 22px;
+  }
+  #tutorial {
+    bottom: 22px;
+    padding: 6px 12px;
+  }
+  #tutorial p {
+    font-size: 12px;
+  }
+  #menu {
+    padding: 4vh 4vw;
+  }
+  .level-map {
+    padding-left: 20px;
+  }
+  #level-list button {
+    padding: 9px 7px;
+  }
+  #level-list {
+    gap: 8px;
+  }
+}

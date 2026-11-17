@@ -1,0 +1,26 @@
+{
+  "name": "game1-feather-guard",
+  "private": true,
+  "version": "0.1.0-m1",
+  "type": "module",
+  "description": "Feather Garden Guard - M1 single-lane physics prototype (slingshot destruction, Matter.js manual stepping)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "matter-js": "0.20.0",
+    "phaser": "3.90.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "^0.19.8",
+    "@types/node": "^26.6.6",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.9"
+  }
+}

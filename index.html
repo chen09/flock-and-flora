@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>飞羽守园 · Flock &amp; Flora</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <a id="brand" href="#" aria-label="返回主菜单"
+          >飞羽守园 <small>FLOCK &amp; FLORA</small></a
+        >
+        <span id="level-name"></span>
+        <nav>
+          <button id="btn-menu">主菜单</button
+          ><button id="btn-settings">声音与画面</button>
+        </nav>
+      </header>
+      <div id="battle-tools" hidden>
+        <div id="hud">
+          <div class="cards" aria-label="植物卡片">
+            <button id="card-dawn"></button><button id="card-pea"></button
+            ><button id="card-shell"></button><button id="card-frost"></button
+            ><button id="card-nest"></button>
+          </div>
+          <div class="cards" aria-label="飞鸟卡片">
+            <button id="bird-woodpecker"></button
+            ><button id="bird-owlbomb"></button
+            ><button id="bird-frostswallow"></button>
+          </div>
+          <div class="cards">
+            <button id="btn-remove">铲除</button
+            ><button id="btn-pause">暂停</button
+            ><button id="btn-restart">重试</button>
+          </div>
+        </div>
+        <div id="brief">
+          <span id="wave-preview"></span
+          ><button id="btn-objectives">本关目标</button>
+        </div>
+      </div>
+      <main id="game-root"></main>
+      <section id="menu" class="screen">
+        <div class="menu-landscape" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </div>
+        <div class="menu-copy">
+          <p class="eyebrow">八段梯田，一起守住</p>
+          <h1>飞羽守园</h1>
+          <p class="english">Flock &amp; Flora</p>
+          <p>花朵经营防线，飞鸟拆解危机。<br />在瞄准的片刻，想好下一步。</p>
+          <button id="btn-continue" class="primary">开始守园</button>
+          <p id="save-notice" role="status"></p>
+        </div>
+        <div class="level-map">
+          <h2>沿着梯田出发</h2>
+          <div id="level-list"></div>
+        </div>
+      </section>
+      <section id="tutorial" hidden aria-live="polite">
+        <p id="tutorial-copy"></p>
+        <div>
+          <button id="tutorial-next">下一步</button
+          ><button id="tutorial-skip">收起教学</button>
+        </div>
+      </section>
+      <section id="result" class="screen" hidden aria-live="polite">
+        <div class="result-card">
+          <p class="eyebrow">田园战报</p>
+          <h2 id="result-title"></h2>
+          <p id="result-stars"></p>
+          <ul id="result-goals"></ul>
+          <p id="result-detail"></p>
+          <div class="result-actions">
+            <button id="btn-next" class="primary">下一关</button
+            ><button id="result-retry">再试一次</button
+            ><button id="result-menu">返回菜单</button>
+          </div>
+        </div>
+      </section>
+      <footer id="controls-hint">
+        选植物 → 点格位 · 选鸟 → 拖拽弹弓 · 瞄准冻结全场 · 拆塔取消未来援军
+      </footer>
+    </div>
+    <dialog id="settings">
+      <h2>声音与画面</h2>
+      <label
+        >音量
+        <input
+          id="setting-volume"
+          type="range"
+          min="0"
+          max="1"
+          step="0.05" /></label
+      ><label><input id="setting-muted" type="checkbox" /> 静音</label
+      ><label><input id="setting-shake" type="checkbox" /> 减弱震屏</label>
+      <p>设置保存在这台设备，不改变战斗能力。</p>
+      <form method="dialog"><button>返回</button></form>
+    </dialog>
+    <dialog id="objectives">
+      <h2 id="objective-title"></h2>
+      <p id="objective-unlocks"></p>
+      <ol id="objective-goals"></ol>
+      <p id="objective-waves"></p>
+      <form method="dialog"><button>开始 / 继续</button></form>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
